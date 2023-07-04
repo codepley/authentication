@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useState } from "react";
 import { AiFillHome } from "react-icons/ai";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [user, setUser] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -18,29 +19,42 @@ export default function LoginPage() {
   const handleLogin = (e:any) => {
     e.preventDefault();
    //  console.log(user);
-    setUser({email: "", password: ""})
+    setUser({email: "", password: "", name: ""})
   }
 
   return (
-    <div className="h-screen bg-red-950 flex justify-center items-center">
+    <div className="h-screen bg-red-950 flex flex-row-reverse justify-center items-center">
       <div className="w-[50%] hidden bg-red-400 h-[85%] mt-auto md:flex flex-col justify-around items-center rounded-t-[25%]">
-        <h1 className="text-white font-bold text-5xl">Welcome Back!</h1>
+        <h1 className="text-white font-bold text-3xl">Register to Authentication</h1>
         <Image
-          src="/loginImg.svg"
+          src="/signupImg.svg"
           width={500}
           height={500}
           alt="login avatar"
         />
       </div>
-      <div className="md:w-[50%] w-[90%] h-[80%] mt-auto flex items-center">
+      <div className="md:w-[50%] w-[90%] h-[90%] mt-auto flex justify-end items-center">
         <div className="bg-white md:w-[90%] w-[100%] flex flex-col items-center h-full rounded-t-[8%] pt-10">
           <div className="flex flex-col gap-4 justify-center items-center">
-            <h1 className="font-bold text-4xl">Login to your account</h1>
+            <h1 className="font-bold text-4xl">Signup</h1>
             <p className="font-bold text-gray-600">
-              Welcome back to Authentication
+              Enter Your Details
             </p>
           </div>
           <form className="mt-16 w-[60%] flex flex-col gap-4" action="">
+          <div className="flex flex-col bg-red-50 items-start border-b-2 border-red-400 p-4">
+              <label className="text-lg font-semibold" htmlFor="name">
+                Name <span className="text-red-600">*</span>
+              </label>
+              <input
+                className="text-xl capitalize font-semibold bg-red-50 outline-none w-full"
+                type="text"
+                name="name"
+                id="name"
+                value={user.name}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
             <div className="flex flex-col bg-red-50 items-start border-b-2 border-red-400 p-4">
               <label className="text-lg font-semibold" htmlFor="email">
                 Email <span className="text-red-600">*</span>
@@ -68,12 +82,12 @@ export default function LoginPage() {
               />
             </div>
             <button onClick={handleLogin} className="w-full rounded bg-red-400 text-2xl py-3 text-white shadow-inner shadow-red-100 uppercase font-bold hover:shadow-md">
-              Login
+              Signup
             </button>
             <div className="flex flex-col gap-2 justify-center items-center">
               <p className="font-extrabold text-center">
-                Dont have an account?{" "}
-                <Link href={'/signup'} className="text-red-400">Sign Up</Link>
+                Already Registered ?{" "}
+                <Link href={'/login'} className="text-red-400">Login</Link>
               </p>
               <Link
                 href={"/"}
