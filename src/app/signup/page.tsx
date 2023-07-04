@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { AiFillHome } from "react-icons/ai";
+import axios from "axios";
 
 export default function SignupPage() {
   const [user, setUser] = useState({
@@ -11,21 +12,30 @@ export default function SignupPage() {
     password: "",
   });
 
-  const handleChange = (e:any) => {
-   //  console.log(e.target.name);
-    setUser({...user, [e.target.name]: e.target.value });
+  const handleChange = (e: any) => {
+    //  console.log(e.target.name);
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = (e:any) => {
-    e.preventDefault();
-   //  console.log(user);
-    setUser({email: "", password: "", name: ""})
-  }
+  const handleLogin = async (e: any) => {
+    try {
+      e.preventDefault();
+      console.log(user);
+      const response = await axios.post('/api/users/signup', user);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setUser({ email: "", password: "", name: "" });
+    }
+  };
 
   return (
     <div className="h-screen bg-red-950 flex flex-row-reverse justify-center items-center">
       <div className="w-[50%] hidden bg-red-400 h-[85%] mt-auto md:flex flex-col justify-around items-center rounded-t-[25%]">
-        <h1 className="text-white font-bold text-3xl">Register to Authentication</h1>
+        <h1 className="text-white font-bold text-3xl">
+          Register to Authentication
+        </h1>
         <Image
           src="/signupImg.svg"
           width={500}
@@ -37,12 +47,10 @@ export default function SignupPage() {
         <div className="bg-white md:w-[90%] w-[100%] flex flex-col items-center h-full rounded-t-[8%] pt-10">
           <div className="flex flex-col gap-4 justify-center items-center">
             <h1 className="font-bold text-4xl">Signup</h1>
-            <p className="font-bold text-gray-600">
-              Enter Your Details
-            </p>
+            <p className="font-bold text-gray-600">Enter Your Details</p>
           </div>
           <form className="mt-16 w-[60%] flex flex-col gap-4" action="">
-          <div className="flex flex-col bg-red-50 items-start border-b-2 border-red-400 p-4">
+            <div className="flex flex-col bg-red-50 items-start border-b-2 border-red-400 px-4 pt-4 pb-2">
               <label className="text-lg font-semibold" htmlFor="name">
                 Name <span className="text-red-600">*</span>
               </label>
@@ -55,7 +63,7 @@ export default function SignupPage() {
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div className="flex flex-col bg-red-50 items-start border-b-2 border-red-400 p-4">
+            <div className="flex flex-col bg-red-50 items-start border-b-2 border-red-400 px-4 pt-4 pb-2">
               <label className="text-lg font-semibold" htmlFor="email">
                 Email <span className="text-red-600">*</span>
               </label>
@@ -68,7 +76,7 @@ export default function SignupPage() {
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div className="flex flex-col bg-red-50 items-start border-b-2 border-red-400 p-4">
+            <div className="flex flex-col bg-red-50 items-start border-b-2 border-red-400 px-4 pt-4 pb-2">
               <label className="text-lg font-semibold" htmlFor="password">
                 Password <span className="text-red-600">*</span>
               </label>
@@ -81,13 +89,18 @@ export default function SignupPage() {
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <button onClick={handleLogin} className="w-full rounded bg-red-400 text-2xl py-3 text-white shadow-inner shadow-red-100 uppercase font-bold hover:shadow-md">
+            <button
+              onClick={handleLogin}
+              className="w-full rounded bg-red-400 text-2xl py-3 text-white shadow-inner shadow-red-100 uppercase font-bold hover:shadow-md"
+            >
               Signup
             </button>
             <div className="flex flex-col gap-2 justify-center items-center">
               <p className="font-extrabold text-center">
                 Already Registered ?{" "}
-                <Link href={'/login'} className="text-red-400">Login</Link>
+                <Link href={"/login"} className="text-red-400">
+                  Login
+                </Link>
               </p>
               <Link
                 href={"/"}
