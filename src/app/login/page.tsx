@@ -6,6 +6,7 @@ import { AiFillHome } from "react-icons/ai";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { validateEmail } from "@/helpers/validateEmail";
+import Loader from "@/utils/Loader";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export default function LoginPage() {
   });
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: any) => {
     //  console.log(e.target.name);
@@ -24,6 +26,7 @@ export default function LoginPage() {
   const handleLogin = async (e: any) => {
     try {
       e.preventDefault();
+      setLoading(true);
       const isValidEmail = validateEmail(user.email);
       if (!isValidEmail) {
         setError("Please enter a valid email!!!");
@@ -40,6 +43,7 @@ export default function LoginPage() {
       setError(error.response.data.message + '!!!');
     } finally {
       setUser({ email: "", password: "" });
+      setLoading(false);
     }
   };
 
@@ -101,7 +105,7 @@ export default function LoginPage() {
               />
             </div>
 
-            <button
+            {loading ? (<div className="w-full rounded bg-red-400 py-2 text-white shadow-inner shadow-red-100 uppercase font-bold hover:shadow-md flex items-center justify-center"><Loader /></div>) : (<button
               onClick={handleLogin}
               className={`w-full rounded ${
                 buttonDisabled ? "bg-gray-400" : "bg-red-400"
@@ -109,7 +113,8 @@ export default function LoginPage() {
               disabled={buttonDisabled}
             >
               Login
-            </button>
+            </button>)}
+
             <div className="flex flex-col gap-2 justify-center items-center">
               <p className="font-extrabold text-center">
                 Dont have an account?{" "}

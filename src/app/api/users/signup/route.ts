@@ -9,7 +9,6 @@ export async function POST(request: NextRequest) {
    try {
       const reqBody = await request.json();
       const {name, email, password} = reqBody;
-      console.log("in route");
       console.log(reqBody);
 
       // check if all fields are valid

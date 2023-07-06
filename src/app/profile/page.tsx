@@ -1,7 +1,9 @@
+import Loader from "@/utils/Loader";
+
 export default function ProfilePage() {
    return (
-      <div>
-         Profile Page
+      <div className="bg-black min-h-screen">
+         <Loader />
       </div>
    );
 }
