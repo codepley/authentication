@@ -105,7 +105,7 @@ export default function LoginPage() {
               />
             </div>
 
-            {loading ? (<div className="w-full rounded bg-red-400 py-2 text-white shadow-inner shadow-red-100 uppercase font-bold hover:shadow-md flex items-center justify-center"><Loader /></div>) : (<button
+            {loading ? (<div className="w-full rounded bg-red-400 py-2 text-white shadow-inner shadow-red-100 uppercase font-bold hover:shadow-md flex items-center justify-center"><Loader color={'loader'} /></div>) : (<button
               onClick={handleLogin}
               className={`w-full rounded ${
                 buttonDisabled ? "bg-gray-400" : "bg-red-400"
