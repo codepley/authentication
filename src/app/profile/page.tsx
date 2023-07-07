@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Loader from "@/utils/Loader";
 import { sendMail } from "@/helpers/mailer";
+import Link from "next/link";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -83,8 +84,8 @@ export default function ProfilePage() {
           Next.js
         </p>
         <div className="flex gap-5">
-          <BsGithub className="w-5 h-5 cursor-pointer" />
-          <BsLinkedin className="w-5 h-5 cursor-pointer" />
+          <Link href={'https://github.com/codepley/authentication.git'}><BsGithub className="w-5 h-5 cursor-pointer" /></Link>
+          <Link href={'https://www.linkedin.com/in/kushal-karan/'}><BsLinkedin className="w-5 h-5 cursor-pointer" /></Link>
         </div>
       </div>
 
