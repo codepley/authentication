@@ -115,13 +115,14 @@ export default function LoginPage() {
               Login
             </button>)}
 
-            <div className="flex flex-col gap-2 justify-center items-center">
+            <div className="flex flex-col gap-1 justify-center items-center">
               <p className="font-extrabold text-center">
                 Dont have an account?{" "}
                 <Link href={"/signup"} className="text-red-400">
                   Sign Up
                 </Link>
               </p>
+              <p className="font-semibold text-gray-500 hover:text-red-400 cursor-pointer">Forgot Password?</p>
               <Link
                 href={"/"}
                 className="flex gap-1 text-red-400 justify-center items-center font-bold"
