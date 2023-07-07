@@ -20,6 +20,7 @@ export async function POST(request: NextRequest){
       // check if user exists
       const user = await User.findOne({email});
       if(!user){
+         console.log("email is wrong");
          return NextResponse.json({message: "Email or Password is Incorrect", success: false}, {status: 400});
       }
       console.log(user);
@@ -27,6 +28,8 @@ export async function POST(request: NextRequest){
       // check if password match
       const isValidPassword = await bcryptjs.compare(password, user.password);
       if(!isValidPassword){
+         console.log(password);
+         console.log(user.password);
          return NextResponse.json({message: "Email or Password is Incorrect", success: false}, {status: 400});
       }
 

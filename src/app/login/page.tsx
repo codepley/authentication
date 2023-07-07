@@ -69,7 +69,7 @@ export default function LoginPage() {
       <div className="md:w-[50%] w-[90%] h-[80%] mt-auto flex items-center">
         <div className="bg-white md:w-[90%] w-[100%] flex flex-col items-center h-full rounded-t-[8%] pt-10">
           <div className="flex flex-col gap-4 justify-center items-center">
-            <h1 className="font-bold text-4xl">Login to your account</h1>
+            <h1 className="font-bold text-4xl text-center">Login to your account</h1>
             <p className="font-bold text-gray-600">
               Welcome back to Authentication
             </p>
@@ -122,7 +122,7 @@ export default function LoginPage() {
                   Sign Up
                 </Link>
               </p>
-              <p className="font-semibold text-gray-500 hover:text-red-400 cursor-pointer">Forgot Password?</p>
+              <Link href={"/forgot-password"} className="font-semibold text-gray-500 hover:text-red-400 cursor-pointer">Forgot Password?</Link>
               <Link
                 href={"/"}
                 className="flex gap-1 text-red-400 justify-center items-center font-bold"

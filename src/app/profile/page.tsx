@@ -43,13 +43,14 @@ export default function ProfilePage() {
       // console.log(response);
       setLoading(true);
       const response = await axios.post("/api/users/sendmail", {
-        profile,
+        email: profile.email,
         emailType: "VERIFY",
       });
+      console.log("after api call");
       console.log(response);
       getUser();
     } catch (error: any) {
-      console.log(error.message);
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -101,7 +102,7 @@ export default function ProfilePage() {
         <div className="w-[100%] md:w-[60%] flex flex-col items-center justify-center gap-5">
           <div className="flex flex-col w-[80%] justify-center items-center gap-1">
             <h1 className="font-bold text-5xl text-center">
-              Hello! <span className="text-red-400">{profile.name}</span>
+              Hello! <span className="text-red-400 capitalize">{profile.name}</span>
             </h1>
             <p className="capitalize text-lg font-semibold">
               welcome to authentication
@@ -112,7 +113,7 @@ export default function ProfilePage() {
           <div>
             {profile.isVerified ? (
               <p className="uppercase text-2xl font-bold tracking-widest text-green-500">
-                Verified
+                Email Verified
               </p>
             ) : (
               <p className="uppercase text-2xl font-bold tracking-widest text-gray-400">

@@ -1,24 +1,13 @@
 "use client";
+import Header from "@/components/Header";
 import Image from "next/image";
 import Link from "next/link";
-import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
-      <div className="flex-1 mt-5 w-full flex gap-2 flex-col justify-center items-center">
-        <h1 className="text-4xl md:text-6xl font-bold tracking-wider uppercase">
-          Authentication
-        </h1>
-        <p className="font-bold">
-          An <span className="text-red-400">Authentication</span> app using
-          Next.js
-        </p>
-        <div className="flex gap-5">
-          <BsGithub className="w-5 h-5 cursor-pointer" />
-          <BsLinkedin className="w-5 h-5 cursor-pointer" />
-        </div>
-      </div>
+      <Header />
+
       <div className="flex-[4] flex-col md:flex-row w-full flex justify-around items-center">
         <div className="flex-1 md:flex justify-center items-center hidden">
           <Image
@@ -33,6 +22,7 @@ export default function Home() {
           <Link href={'/signup'} className="bg-red-400 w-[90%] tracking-widest text-center md:w-[40%] p-4 rounded-lg">Signup</Link>
         </div>
       </div>
+
     </div>
   );
 }
