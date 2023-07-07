@@ -18,7 +18,7 @@ export default function ProfilePage() {
       const response = await axios.get("/api/users/logout");
       router.push("/login");
     } catch (error: any) {
-      console.log(error.message);
+      // console.log(error.message);
     } finally {
       setLoading(false);
     }
@@ -29,9 +29,9 @@ export default function ProfilePage() {
       setLoading(true);
       const response = await axios.get("/api/users/me");
       setProfile(response.data.user);
-      console.log(response.data.user);
+      // console.log(response.data.user);
     } catch (error: any) {
-      console.log(error.message);
+      // console.log(error.message);
     } finally {
       setLoading(false);
     }
@@ -46,18 +46,18 @@ export default function ProfilePage() {
         email: profile.email,
         emailType: "VERIFY",
       });
-      console.log("after api call");
-      console.log(response);
+      // console.log("after api call");
+      // console.log(response);
       getUser();
     } catch (error: any) {
-      console.log(error);
+      // console.log(error);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    console.log("in profile useEffect");
+    // console.log("in profile useEffect");
     getUser();
   }, []);
 

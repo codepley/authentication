@@ -22,11 +22,11 @@ export default function VerifyEmail() {
         token,
         emailType,
       });
-      console.log(response);
+      // console.log(response);
       setMessage(response.data.message);
       router.push("/profile");
     } catch (error: any) {
-      console.log(error.response.data.message);
+      // console.log(error.response.data.message);
       setMessage(error.response.data.message);
     } finally {
       setLoading(false);

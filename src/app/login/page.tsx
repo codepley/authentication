@@ -32,14 +32,14 @@ export default function LoginPage() {
         setError("Please enter a valid email!!!");
       } else {
         setError("");
-        console.log(isValidEmail);
+        // console.log(isValidEmail);
         const response = await axios.post("/api/users/login", user);
         // const ;
-        console.log(response);
+        // console.log(response);
         router.push("/profile");
       }
     } catch (error:any) {
-      console.log(error.response);
+      // console.log(error.response);
       setError(error.response.data.message + '!!!');
     } finally {
       setUser({ email: "", password: "" });

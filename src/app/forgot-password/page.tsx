@@ -26,7 +26,7 @@ export default function ForgotPasswodPage() {
       }
     } catch (error: any) {
       setMessage(error.response.data.message + " !!!");
-      console.log(error.response.data.message);
+      // console.log(error.response.data.message);
     } finally {
       setLoading(false);
       setEmail("");

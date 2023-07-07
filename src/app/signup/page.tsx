@@ -33,14 +33,14 @@ export default function SignupPage() {
         setError("Please enter a valid email!!!");
       } else {
         setError("");
-        console.log(isValidEmail);
+        // console.log(isValidEmail);
         const response = await axios.post("/api/users/signup", user);
         // const ;
-        console.log(response);
+        // console.log(response);
         router.push("/login");
       }
     } catch (error: any) {
-      console.log(error.response);
+      // console.log(error.response);
       setError(error.response.data.message + "!!!");
     } finally {
       setUser({ email: "", password: "", name: "" });

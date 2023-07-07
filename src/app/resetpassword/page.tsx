@@ -32,7 +32,7 @@ export default function ResetPassword() {
         }
       }
     } catch (error: any) {
-      console.log(error);
+      // console.log(error);
       setMessage(error.response.data.message);
     } finally {
       setLoading(false);
